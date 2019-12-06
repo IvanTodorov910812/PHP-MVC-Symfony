@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inbox {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    {#<!-- Latest compiled and minified CSS -->#}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Homepage</a></li>
+            <li class="breadcrumb-item active">All Messages</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <h2>Inbox</h2>
+    <div class="box-body no-padding">
+            <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                    <thead style="border-style:dashed">
+                    <tr>
+                        <th>Date</th>
+                        <th>From</th>
+                        <th>Content</th>
+                        <th>Status</th>
+                        <th>Open</th>
+                    </tr>
+                    </thead>
+                    {% for message in messages %}
+                        {% if not message.isReader %}
+                    <tbody>
+
+                        <tr>
+                            <td class="mailbox-date"> {{ message.dateAdded|date('d/M/y H:m:s') }} </td>
+                            <td class="mailbox-subject"><b> {{ message.sender.fullName }} </b> </td>
+                            <td class="mailbox-about">- {{ message.getAbout }} - </td>
+                            <td style="color: red" class="mailbox-attachment">Unread</td>
+                            <td class="mailbox-name"><a href="{{ path('user_current_message', {'id': message.id}) }}"><i class="fa fa-reply" aria-hidden="true"></i></a></td>
+                        </tr>
+                            <hr />
+                    {% else %}
+                      <tr>
+                          <td class="mailbox-date"> {{ message.dateAdded|date('d/M/y H:m:s') }} </td>
+                          <td class="mailbox-subject"><b> {{ message.sender.fullName }} </b></td>
+                          <td class="mailbox-about">- {{ message.getAbout }} - </td>
+                          <td style="color: green" class="mailbox-attachment">Readed</td>
+                          <td class="mailbox-name"><a href="{{ path('user_current_message', {'id': message.id}) }}"><i class="fa fa-eye" aria-hidden="true" title="View"></i></a></td>
+                    </tr>
+                    {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table> <!-- /.table -->
+            </div><!-- /.mail-box-messages -->
+        </div><!-- /.box-body -->
+        <hr>
+    {# display navigation #}
+    {#<div class="navigation text-center">#}
+        {#{{ knp_pagination_render(pagination) }}#}
+    {#</div>#}
+{% endblock %}

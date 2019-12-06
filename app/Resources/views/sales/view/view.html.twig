@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sale{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('allSales') }}">All Sales</a></li>
+            <li class="breadcrumb-item active" aria-current="page">New Sale</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('/js/productNameFieldAutocomplete.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+{#{% for sale in sales %}#}
+<div class="container">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong>{{ sale.clientName }}</strong>
+                        <br>
+                        {{ sale.clientAddress }}
+                        <br>
+                        <abbr title="Phone">Phone: </abbr>{{ sale.clientPhone }}
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <p>
+                        <em>Date: {{ sale.soldOutOn|date('d-M-Y') }}</em>
+                    </p>
+                    <p>
+                        <em>Receipt #: {{ sale.id }}</em>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <h1>Receipt</h1>
+                </div>
+                </span>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Measure</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total[Netto]</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="col-md-9"><em>{{ sale.productName }}</em></h4></td>
+                        <td class="col-md-9"><em>{{ sale.measure }}</em></h4></td>
+                        <td class="col-md-1" style="text-align: center"> {{ sale.quantity }} </td>
+                        <td class="col-md-1 text-center">{{ sale.price }}</td>
+                        <td class="col-md-1 text-center">{{ sale.totalSum }}</td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="text-right">
+                            <p>
+                                <strong>Tax(10%): </strong>
+                            </p></td>
+                        <td class="text-center">
+                            <p>
+                                <strong>${{ sale.tax }}</strong>
+                            </p></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="text-right"><h4><strong>Total[Brutto]: </strong></h4></td>
+                        <td class="text-center text-danger"><h4><strong>€{{ sale.totalSumBrutto }}</strong></h4></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-success btn-lg btn-block">
+                    Paid   <span class="fa fa-check"></span>
+                </button></td>
+            </div>
+        </div>
+    </div>
+{#{% endfor %}#}
+{% endblock %}
+

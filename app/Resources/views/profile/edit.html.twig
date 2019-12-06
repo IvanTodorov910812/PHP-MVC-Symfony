@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('allUsers') }}">All Users</a></li>
+            <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h2> {{ user.fullName }}</h2>
+                </div>
+                <hr>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form_row(form.fullName) }}
+                                {{ form_row(form.email) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(form.old_password) }}
+                                {{ form_row(form.new_password) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Roles:</label>
+                                <ul class="list-unstyled">
+                                    {% for role in user.profileRoles %}
+                                        <li>{{ role.description }} </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                                <a class="btn btn-default" href="{{ path('homepage') }}">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Update</button>
+
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+        </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            window.setTimeout(function () {
+                $('#old_password, #new_password').val('')
+            }, 100)
+        })
+    </script>
+{% endblock %}

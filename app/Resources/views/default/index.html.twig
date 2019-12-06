@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block main %}
+    {% if app.user %}
+    {% if app.user.isAdmin or app.user.isOffice or app.user.isSuperAdmin %}
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/Warehouse.jpg') }}" alt="Card image cap" >
+            <div class="card-body">
+                <h5 class="card-title">Warehouse</h5>
+                <a href="#"><img class="getAll" src="{{ asset('imagesFrontPage/Analyse.svg') }}" alt="Analyse Warehouse" title="See Analyse"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary ">Inventar</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/Suppliers.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Suppliers</h5>
+                <a href="{{ path('newSupplier') }}"><img class="getAll" src="{{ asset('imagesFrontPage/addSvg.svg') }}" alt="Analyse Suppliers" title="Add New Supplier"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('allSuppliers') }}" class="btn btn-primary">Manage</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/Delivery.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Delivery</h5>
+                <a href="{{ path('newDelivery') }}"><img class="getAll" src="{{ asset('imagesFrontPage/newDelivery.svg') }}" alt="Analyse Deliveries" title="Add New Delivery"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('allDeliveries') }}" class="btn btn-primary">List History</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/soldProducts.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Sold Products</h5>
+                <a href="{{ path('newSale') }}"><img class="getAll" src="{{ asset('imagesFrontPage/newSoldProduct.svg') }}" alt="Analyse Sold Products" title="Add New Sale"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('allSales') }}" class="btn btn-primary">Report Sales</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/ClaimForProducts.png') }}" alt="Card image cap" >
+            <div class="card-body">
+                <h5 class="card-title">Waste Products</h5>
+                <a href="#"><img class="getAll" src="{{ asset('imagesFrontPage/newClaim.svg') }}" alt="Analyse Waste Products" title="Add New Wasted Product"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('viewClaims') }}" class="btn btn-primary centerText">Get All Claims</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/bill.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Bills</h5>
+                <a href="#"><img class="getAll" src="{{ asset('imagesFrontPage/newBill.svg') }}" alt="Add New Bill" title="Add New"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Show Analyse</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/PlanCalendar.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Agenda</h5>
+                <a href="#"><img class="getAll" src="{{ asset('imagesFrontPage/NewAppointment.svg') }}"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('viewAgenda') }}" class="btn btn-primary">Appointments</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/Agenda.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Personal</h5>
+                <a href="#"><img class="getAll" src="{{ asset('imagesFrontPage/newHoliday.svg') }}"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('tableHoliday') }}" class="btn btn-primary">Plan Status</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/Contacts.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Contacts</h5>
+                <a href="{{ path('newContact') }}"><img class="getAll" src="{{ asset('imagesFrontPage/addNewContact.svg') }}" alt="Add New Contact" title="Add New Contact"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('allContacts') }}" class="btn btn-primary">Search</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('imagesFrontPage/AboutUs.jpg') }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">About us</h5>
+                <a href=""><img class="getAll" src="{{ asset('imagesFrontPage/infoAbout.svg') }}" alt="About us"></a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{{ path('supportPage') }}" class="btn btn-primary">Get in touch</a>
+            </div>
+        </div>
+    {% endif %}
+    {% else %}
+        <link rel="stylesheet" href="{{ asset('css/frontPageSVG.css') }}">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <pattern id="bg" patternUnits="userSpaceOnUse" width="5" height="2" patternContentUnits="userSpaceOnUse">
+                    <rect x="1.5" y="1.5" width="7" height="7" fill="none" stroke="hsl(0,0%,100%)" transform="rotate(45 5 5)" vector-effect="non-scaling-stroke"></rect>
+                </pattern>
+                <linearGradient id="bgGrad" gradientUnits="userSpaceOnUse" x1="0" y1="1" x2="2" y2="0">
+                    <stop offset="0.3" stop-color="hsl(0,0%,0%)"></stop>
+                    <stop offset="0.31" stop-color="hsl(0,0%,100%)"></stop>
+                    <stop offset="1" stop-color="hsl(0,0%,100%)"></stop>
+                </linearGradient>
+                <mask id="bgMask" maskContentUnits="objectBoundingBox">
+                    <rect x="-1" y="-1" width="3" height="3" fill="url(#bgGrad)"></rect>
+                </mask>
+                <path id="flag" d="M25 25 h 50 v 50 h -50 z" vector-effect="non-scaling-stroke"></path>
+                <pattern id="guide" patternUnits="userSpaceOnUse" width="2" height="2" patternContentUnits="userSpaceOnUse">
+                    <line x1="0" y1="0" x2="0" y2="2" stroke="powderblue" stroke-width="1" vector-effect="non-scaling-stroke"></line>
+                </pattern>
+                <linearGradient id="guideGrad" gradientUnits="userSpaceOnUse" x1="0" y1="1" x2="2" y2="0">
+                    <stop offset="0.3" stop-color="hsl(0,0%,100%)"></stop>
+                    <stop offset="0.31" stop-color="hsl(0,0%,0%)"></stop>
+                    <stop offset="1" stop-color="hsl(0,0%,0%)"></stop>
+                </linearGradient>
+                <mask id="guideMask" maskContentUnits="objectBoundingBox">
+                    <rect x="-1" y="-1" width="3" height="3" fill="url(#guideGrad)"></rect>
+                </mask>
+                <marker id="mark" viewBox="0 0 100 100" markerHeight="5" markerWidth="5" markerUnits="strokeWidth" refX="50" refY="50" orient="auto">
+                    <rect width="50" height="50" fill="none" stroke="white"></rect>
+                    <circle cx="50" cy="50" r="50" fill="none" stroke="white" stroke-width="25"></circle>
+                </marker>
+                <animate href="#guideGrad" attributeName="x1" values="4;1" dur="4s" repeatCount="1" fill="freeze"></animate>
+                <animate href="#bgGrad" attributeName="x1" values="3;-1" dur="4s" repeatCount="1" fill="freeze"></animate>
+            </defs>
+            <use href="#flag" fill="url(#bg)" mask="url(#bgMask)" stroke="none"></use>
+            <g mask="url(#guideMask)">
+                <use href="#flag" fill="url(#guide)" stroke="white" marker-mid="url(#mark)" marker-start="url(#mark)" marker-end="url(#mark)"></use>
+                <text x="50" y="50" text-anchor="middle" fill="white" dominant-baseline="middle" font-size="20">Welcome</text>
+            </g>
+        </svg>
+
+        <div class="container body-content">
+            <div class="container">
+                <div class="jumbotron">
+                    <h1>Sign up & Login for using the System</h1>
+                    <p> Click on Login in header</p>
+                </div>
+                {#<p>This is some text.</p>#}
+                {#<p>This is another text.</p>#}
+
+            </div><!--container close-->
+
+        </div>
+
+    {% endif %}
+    {# display navigation #}
+    {#<div class="navigation text-center">#}
+        {#{{ knp_pagination_render(pagination) }}#}
+    {#</div>#}
+
+{% endblock %}

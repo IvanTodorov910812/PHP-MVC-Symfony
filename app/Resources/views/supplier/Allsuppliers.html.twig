@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List All Suppliers{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Homepage </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Suppliers Control Panel</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+
+    {#<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">#}
+    {#<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>#}
+    {#<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>#}
+    {#<!------ Include the above in your HEAD tag ---------->#}
+    <div id="suppliers" class="table-responsive">Loading...</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript"
+            src="//cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/datatables.min.js"></script>
+    <script charset="UTF-8" src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
+    <script>
+        $(function () {
+            $('#suppliers').initDataTables({{ datatable_settings(datatable) }}, {
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.15/i18n/English.json'
+                },
+                searching: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    'copy',
+                    {extend: 'pdf', title: 'Suppliers'},
+                    {extend: 'print'}
+                ],
+
+                stateSaveCallback: function (settings, data) {
+                    console.log('state saved...')
+                    // localStorage.setItem('DataTables_' + settings.sInstance, JSON.stringify(data))
+                }
+
+            }).then(function (dt) {
+                // dt contains the initialized instance of DataTables
+                dt.on('draw', function (el1, el2) {
+                    console.log('Redrawing table')
+                })
+            })
+        })
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css"
+          href="//cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/datatables.min.css"/>
+{% endblock %}

@@ -1,0 +1,20 @@
+canvas {
+    /*position:  absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*margin-top: 365px;*/
+    /*margin-left: 956px;*/
+    /*border-radius: 10px 10px 10px 10px;*/
+    /*width: 30%;*/
+    /*height: 670px;*/
+
+    position:  absolute;
+    top: 0;
+    left: 0;
+    margin-left: 510px;
+    margin-top: 70px;
+    border-radius: 5px 5px 5px 5px;
+    width: 53.5%;
+    height: 24%;
+}
+

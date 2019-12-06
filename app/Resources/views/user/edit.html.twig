@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile {{ user.fullName }}{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('allUsers') }}">All Users</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile {{ user.fullName }}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h2> {{ user.fullName }}</h2>
+                </div>
+                <hr>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}, 'multipart': true}) }}
+    <div class="row">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.fullName) }}
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.old_password) }}
+                    {{ form_row(form.new_password) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_row(form.profileRoles) }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Update</button>
+            <a class="btn btn-default" href="{{ path('allUsers') }}">Cancel</a>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {{ form_end(form) }}
+{% endblock %}
+
+

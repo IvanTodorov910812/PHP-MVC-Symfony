@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sale{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('allSales') }}">All </a></li>
+            <li class="breadcrumb-item active" aria-current="page">New Sale</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block javascripts %}
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" method="post">
+                <input type="hidden" name="user[_token]" value="{{ csrf_token('user') }}"/>
+                <fieldset>
+                    <legend>Create New Delivery</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="sale_productName">Product</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="sale_productName" placeholder="ProductName" name="sale[productName]" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="sale_measure">Measure</label>
+                        <div class="col-sm-4">
+                            {{ form_widget(form.measure) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="sale_quantity">Quantity</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="sale_quantity" placeholder="Quantity" name="sale[quantity]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" href="{{ path('homepage') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+
+                    {{  form_row(form._token) }}
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#sale_productName").autocomplete({
+                source: "/salesProductName",
+                select: function (event, ui) {
+                    $('#sale_productName').val(ui.item.productName);
+                    return false;
+                }
+            }).data( "uiAutocomplete" )
+                ._renderItem = function( ul, item ) {
+                return $("<li class='form-control' style='width: 16%'></li>").data("item.autocomplete", item)
+                    .append(item.productName)
+                    .appendTo(ul);
+            };
+        });
+    </script>
+{% endblock %}
+

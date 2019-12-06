@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contact{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('allContacts') }}">All Contacts </a></li>
+            <li class="breadcrumb-item active" aria-current="page">New Contact</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}, 'multipart': true}) }}
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Add New Contact</legend>
+                    <input type="hidden" name="user[_token]" value="{{ csrf_token('user') }}"/>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="contact_email">Email</label>
+                        <div class="col-sm-4">
+                            <input  type="text" class="form-control" id="contact_email" placeholder="Email" name="contact[email]" required >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="contact_fullName">Full Name</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="contact_fullName" placeholder="Full Name" name="contact[fullName]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="contact_phone">Phone</label>
+                        <div class="col-sm-4">
+                            <input type="tel" class="form-control" id="contact_phone" placeholder="Telefon" name="contact[phone]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="contact_address">Address</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="contact_address" placeholder="Address" name="contact[address]" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="documents">Documents</label>
+                            <input type="file" id="documents" name="documents[]" class="form-control-file"
+                                   placeholder="Contact documents" multiple>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" href="#">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                    {{  form_row(form._token) }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}

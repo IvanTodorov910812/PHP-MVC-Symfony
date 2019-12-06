@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register Page{% endblock %}
+
+{% block main %}
+
+    {% for msg in app.session.flashbag.get('info') %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+    {#<ul>#}
+    {#{% for error in app.session.flashbag %}#}
+        {#{#}
+            {#<li>{{ error.message }}</li>#}
+        {#}#}
+    {#{% endfor %}#}
+    {#</ul>#}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" method="post">
+                <input type="hidden" name="user[_token]" value="{{ csrf_token('user') }}"/>
+                <fieldset>
+                    <legend>Register</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_email">Email</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" id="user_email" placeholder="Email" name="user[email]" required type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_fullName">Full Name</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="user_fullName" placeholder="Full Name" name="user[fullName]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_password_first">Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="user[password][first]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_password_second">Confirm Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="user_password_second" placeholder="Password" name="user[password][second]" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" href="{{ path('homepage') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+
+                    {{  form_row(form._token) }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

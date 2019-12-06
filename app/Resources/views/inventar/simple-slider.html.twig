@@ -1,0 +1,207 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List All Sales{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Homepage </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sales</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Simple Slider</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              crossorigin="anonymous">
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+              rel="stylesheet"
+              type='text/css'>
+        <link rel="stylesheet" href="styles.css">
+
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.8.0/slick.min.js"></script>
+
+    </head>
+    <body>
+
+    <div class="container">
+        <div>
+            <div class="wrapper">
+                <img src="img/Untitled.png" alt="">
+                <p class="bold heading">Angular Fundamentals-November</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  21 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  4 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/linux.png" alt="">
+                <p class="bold heading">Linux System Admimistration</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  21 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  10 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/fundamentalss.png" alt="">
+                <p class="bold heading">Fundamentals of Programming</p>
+                <p class="info">
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i> 23 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  8 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/trainers.png" alt="">
+                <p class="bold heading">Train the Trainers - November 20..</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  24 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  3 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/template_6-1024x536.jpg" alt="">
+                <p class="bold heading">Arduino Basic</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  21 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  4 weeks</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="wrapper">
+                <img src="img/Untitled.png" alt="">
+                <p class="bold heading">Angular Fundamentals-November</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  21 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  4 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/linux.png" alt="">
+                <p class="bold heading">Linux System Admimistration</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  21 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  10 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/fundamentalss.png" alt="">
+                <p class="bold heading">Fundamentals of Programming</p>
+                <p class="info">
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i> 23 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  8 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/trainers.png" alt="">
+                <p class="bold heading">Train the Trainers - November 20..</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  24 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  3 weeks</span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="wrapper">
+                <img src="img/template_6-1024x536.jpg" alt="">
+                <p class="bold heading">Arduino Basic</p>
+                <p>
+                <span class="date"><i class="fa fa-play-circle" aria-hidden="true"></i>  21 November
+                    2017</span>
+                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>  4 weeks</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $( document ).ready( function () {
+            $( '.container' ).slick( {
+                autoplay: true,
+                autoplaySpeed: 5000,
+                slideshow: 1,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                lazyLoad: 'ondemand',
+                arrows: true,
+                nextArrow: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+                prevArrow: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
+
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 1008,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: "unslick"
+                    }
+
+                ]
+
+            } );
+        } );
+
+    </script>
+    </body>
+
+  </html>
+{% endblock %}

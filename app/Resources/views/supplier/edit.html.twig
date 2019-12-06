@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supplier {{ supplier.name }}{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('allSuppliers') }}">All Suppliers</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Supplier {{ supplier.name }}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img src="https://i.ibb.co/SyHp5Zy/delivery-tempo-icon-256x256.png" alt="stack photo" class="img">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h2>Edit Supplier  <strong>{{ supplier.name }}</strong></h2>
+                </div>
+                <hr>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}, 'multipart': true}) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.description) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.telefon) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.street) }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Update</button>
+            <a class="btn btn-default" href="{{ path('allSuppliers') }}">Cancel</a>
+            <a class="btn btn-danger" href="{{ path('supplierDelete', {'supplier': supplier.id }) }}"><i class="fa fa-trash" aria-hidden="true"></i>    Delete</a>
+
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {{ form_end(form) }}
+{% endblock %}
+
+

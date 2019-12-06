@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wasted Prodcuts{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Homepage </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Waste Products </li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+
+    <h3 style="padding-left: 15px">Create new Claim</h3>
+    <form class="form-inline" style="display: flex; flex-wrap: wrap;">
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="person">Person</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="productName" placeholder="Product Name" name="productName" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="phone">Phone</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="supplierName" placeholder="Supplier Name" name="supplierName" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="email">Email</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="incomeDay" placeholder="IncomeDay" name="incomeDay" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="period">Period</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="quantity" placeholder="Quantity" name="quantity" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="days">Days</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="description" placeholder="Description" name="description" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <button id="btnCreate" class="btn btn-success" style="margin-left: 78px; margin-top: 2px"><i class="fa fa-plus"></i> Add</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div style="width: 50%">
+        <h1 style="padding-left: 10px">Table Wasted Products</h1>
+        <div id="wasteproducts" class="container" style="display: flex; flex-wrap: wrap"></div>
+    </div>
+    <button id="btnLoad" class="btn btn-primary" style="margin-left: 15px; margin-top: 10px"><i class="fa fa-spinner"></i> Load</button>
+    <link rel="stylesheet" href="{{ asset('css/holidaysTable.css') }}">
+    <script src="{{ asset('/js/cleimsAJAXStatus.js') }}"></script>
+
+{% endblock %}

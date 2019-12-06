@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Monoton';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Monoton'), local('Monoton-Regular'), url(https://fonts.gstatic.com/s/monoton/v8/5h1aiZUrOngCibe4TkHLRw.ttf) format('truetype');
+}
+svg {
+    display: block;
+    width: 100vw;
+    height: 40vh;
+    mix-blend-mode: difference;
+    font-family: Monoton, cursive;
+}
+body {
+    overflow: hidden;
+}
+body:before {
+    content: '';
+    display: block;
+    width: 110vw;
+    height: 110vh;
+    position: absolute;
+    z-index: -1;
+    inset: -5vh 0 0 -5vw;
+    background: center / cover url(https://microstoresystem.s3.eu-central-1.amazonaws.com/2e1eef811f459202d908c189d8827f27.jpg);
+    -webkit-filter: brightness(0.3);
+    filter: brightness(0.3);
+}

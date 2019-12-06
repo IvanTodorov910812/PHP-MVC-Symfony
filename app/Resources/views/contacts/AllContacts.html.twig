@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}All Contatcs{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Homepage </a></li>
+            <li class="breadcrumb-item active" aria-current="page">All Contacts</li>
+        </ol>
+    </nav>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('/js/phonebook.js') }}"></script>
+    {#<script src="{{ asset('/js/createNewContact.js') }}"></script>#}
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <!-- contacts card -->
+        <div class="card card-default" id="card_contacts" style="width:70%">
+            <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+                <ul class="list-group pull-down" id="contact-list">
+                    {% for contact in pagination %}
+                    <li class="list-group-item">
+                        <div class="row w-100">
+                            <div class="col-12 col-sm-6 col-md-3 px-0">
+                                <img src="{{ curUrl }}" alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid" style="width: 100%">
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                <label class="name lead">{{ contact.fullName }}</label>
+                                <br>
+                                <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="5842 Hillcrest Rd"></span>
+                                <span class="text-muted">{{ contact.address }}</span>
+                                <br>
+                                <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="(870) 288-4149"></span>
+                                <span class="text-muted small">{{ contact.phone }}</span>
+                                <br>
+                                <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                <span class="text-muted small text-truncate">{{ contact.email }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!--/contacts list-->
+            </div>
+        </div>
+    </div>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    {#<button id = "find-me">Show my location</button><br/>#}
+    {#<p id = "status"></p>#}
+    {#<a id = "map-link" target="_blank"></a>#}
+{% endblock %}

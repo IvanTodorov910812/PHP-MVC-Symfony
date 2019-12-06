@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/aboutUsView.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('/js/canvasLogin.js') }}"></script>
+{% endblock %}
+
+{% block body_id 'login' %}
+
+{% block main %}
+
+    <div class="container body-content span=8 offset=2">
+        <div class="well" style="margin-top: 250px; margin-left: 60px">
+            <form name="authenticate" class="form-horizontal" action="{{ path('security_login') }}" method="post">
+                <fieldset>
+                    <legend>Login</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_email">Email</label>
+                        <div class="col-sm-4 ">
+                            <input  type="email" class="form-control"  id="user_email" placeholder="Email" name="_username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="password">Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="_password">
+                        </div>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" href="{{ path('homepage') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+{% endblock %}

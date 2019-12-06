@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block title %}Agenda{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Homepage </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Agenda </li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block main %}
+
+    <h3 style="padding-left: 15px">Create new Appointment </h3>
+    <form class="form-inline" style="display: flex; flex-wrap: wrap;">
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="person">Person</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="date" placeholder="Appointment's Date" name="date" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="phone">Phone</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="time" placeholder="Appointment's Time" name="time" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="email">Email</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="appointmentPlace" placeholder="Appointment's Address" name="appointmentPlace" required>
+            </div>
+        </div>
+        <div class="form-group">
+            {#<label class="col-sm-4 control-label" for="period">Period</label>#}
+            <div class="col-sm-4 ">
+                <input class="form-control" id="eventName" placeholder="EventName" name="eventName" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <button id="btnCreate" class="btn btn-success" style="margin-left: 265px; margin-top: 2px"><i class="fa fa-plus"></i> Add</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div style="width: 50%">
+        <h1 style="padding-left: 10px">Table Appointments</h1>
+        <div id="agenda" class="container" style="display: flex; flex-wrap: wrap"></div>
+    </div>
+    <button id="btnLoad" class="btn btn-primary" style="margin-left: 15px; margin-top: 10px"><i class="fa fa-spinner"></i> Load</button>
+    <link rel="stylesheet" href="{{ asset('css/holidaysTable.css') }}">
+    <script src="{{ asset('/js/agendaAJAXStatus.js') }}"></script>
+
+{% endblock %}
