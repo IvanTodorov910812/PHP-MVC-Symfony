@@ -5,7 +5,6 @@ Accounting Store System Web App
 Symfony project created on March 13, 2019, 4:12 pm.
 
 ### About
-About
 This app is intended to assist stores, self-employment industry to manage their sales, deliveries & bills and notify for needed deliveries.
 ---
 
